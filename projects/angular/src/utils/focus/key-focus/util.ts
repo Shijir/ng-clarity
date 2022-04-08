@@ -40,8 +40,8 @@ export function preventArrowKeyScroll(event: KeyboardEvent) {
   }
 }
 
-export function isKeyALetter(event: KeyboardEvent) {
+export function isKeyEitherLetterOrNumber(event: KeyboardEvent) {
   const char = event.key;
-  // only letter characters differ when they switch between lowercase and uppercase.
+  // Only letter characters differ when they switch between lowercase and uppercase, whether it's an English or non-English letter.
   return char.toLowerCase() !== char.toUpperCase() || (char >= '0' && char <= '9');
 }

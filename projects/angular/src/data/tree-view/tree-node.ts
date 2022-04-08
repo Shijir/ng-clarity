@@ -28,7 +28,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, filter } from 'rxjs/operators';
 import { IfExpandService } from '../../utils/conditional/if-expanded.service';
-import { isKeyALetter, keyValidator, preventArrowKeyScroll } from '../../utils/focus/key-focus/util';
+import { isKeyEitherLetterOrNumber, keyValidator, preventArrowKeyScroll } from '../../utils/focus/key-focus/util';
 import { ForTypeAheadProvider } from '../../utils/for-type-ahead/for-type-ahead.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
@@ -292,7 +292,7 @@ export class ClrTreeNode<T> implements OnInit, AfterContentInit, OnDestroy {
         this.toggleExpandOrTriggerDefault();
         break;
       default:
-        if (this._model.textContent && isKeyALetter(event)) {
+        if (this._model.textContent && isKeyEitherLetterOrNumber(event)) {
           this.typeAheadKeyBuffer += event.key;
           this.typeAheadKeyEvent.next(this.typeAheadKeyBuffer);
           return;

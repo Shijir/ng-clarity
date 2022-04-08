@@ -17,5 +17,25 @@ const STATES_AND_CITIES = getStatesAndCities(10);
 export class TypeAheadTreeViewDemo {
   synchronousChildren = (node: TreeNode) => node.children;
 
-  multiRoot: TreeNode[] = STATES_AND_CITIES;
+  private numberContentNode0to4 = {
+    name: '0-4',
+    children: [{ name: '0' }, { name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }],
+  };
+
+  private numberContentNode5to9 = {
+    name: '5-9',
+    children: [{ name: '5' }, { name: '6' }, { name: '7' }, { name: '8' }, { name: '9' }],
+  };
+
+  private nonEnglishContentNode = {
+    name: 'Украйна 💙💛',
+    children: [{ name: 'Севастополь' }, { name: 'Донецьк' }, { name: 'Луганськ' }],
+  };
+
+  multiRoot: TreeNode[] = [
+    ...STATES_AND_CITIES,
+    this.numberContentNode0to4,
+    this.numberContentNode5to9,
+    this.nonEnglishContentNode,
+  ];
 }
